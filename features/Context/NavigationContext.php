@@ -120,8 +120,8 @@ class NavigationContext extends RawMinkContext implements PageObjectAwareInterfa
         $this->password = $username;
 
         $this->getMainContext()->getSubcontext('fixtures')->setUsername($username);
-        $this->openPage('user login');
-        $this->login();
+//        $this->openPage('user login');
+//        $this->login();
     }
 
     /**
@@ -754,16 +754,18 @@ class NavigationContext extends RawMinkContext implements PageObjectAwareInterfa
 
         /** @var \Context\Page\Base\Base $page */
         $page = $this->getMainContext()->spin(function () use ($options) {
-            $page = $this->getCurrentPage()->open($options);
+            $page = $this->getCurrentPage();
+            $page->username = $this->username;
+            $page->open($options);
 
             return $page;
-        }, 'Trying to opening page ' . $this->currentPage);
+        }, 'Trying to open page ' . $this->currentPage);
 
         return $page;
     }
 
     /**
-     * @return \SensioLabs\Behat\PageObjectExtension\PageObject\Page
+     * @return \SensioLabs\Behat\PageObjectExtension\PageObject\Page|Base
      */
     public function getCurrentPage()
     {

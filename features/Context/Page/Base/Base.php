@@ -21,6 +21,9 @@ class Base extends Page
 {
     use SpinCapableTrait;
 
+    /** @var string */
+    public $username = 'Julia';
+
     protected $elements = [
         'Dialog'           => ['css' => 'div.modal'],
         'Title'            => ['css' => '.navbar-title'],
@@ -131,6 +134,18 @@ class Base extends Page
         }
 
         return $url;
+    }
+
+    protected function getPath()
+    {
+        $path = parent::getPath();
+        $baseUrl = rtrim($this->getParameter('base_url'), '/').'/';
+        $path = 0 !== strpos($path, 'http') ? $baseUrl.ltrim($path, '/') : $path;
+
+        $loginString = sprintf('%s:%s@', $this->username, $this->username);
+        $path = str_replace('http://', 'http://' . $loginString, $path);
+
+        return $path;
     }
 
     /**
