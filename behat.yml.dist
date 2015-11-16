@@ -40,3 +40,83 @@ ci:
             output_path: null,app/build/logs/behat/
     filters:
         tags: ~skip&&~skip-pef&&~doc&&~unstable&&~unstable-app&&~deprecated&&~@unstable-app
+
+jenkins-1:
+    context:
+        parameters:
+            base_url: http://pim-behat-1.ci/
+            timeout: 30000
+            window_width: 1280
+            window_height: 1024
+    extensions:
+        Behat\MinkExtension\Extension:
+            base_url: http://pim-behat-1.ci/
+        Behat\Symfony2Extension\Extension:
+            kernel:
+                env: behat1
+    formatter:
+        name: Context\SummaryFormatter,junit
+        parameters:
+            output_path: null,app/build/logs/behat/
+    filters:
+        tags: ~skip&&~skip-pef&&~doc
+
+jenkins-2:
+    context:
+        parameters:
+            base_url: http://pim-behat-2.ci/
+            timeout: 30000
+            window_width: 1280
+            window_height: 1024
+    extensions:
+        Behat\MinkExtension\Extension:
+            base_url: http://pim-behat-2.ci/
+        Behat\Symfony2Extension\Extension:
+            kernel:
+                env: behat2
+    formatter:
+        name: Context\SummaryFormatter,junit
+        parameters:
+            output_path: null,app/build/logs/behat/
+    filters:
+        tags: ~skip&&~skip-pef&&~doc
+
+jenkins-3:
+    context:
+        parameters:
+            base_url: http://pim-behat-3.ci/
+            timeout: 30000
+            window_width: 1280
+            window_height: 1024
+    extensions:
+        Behat\MinkExtension\Extension:
+            base_url: http://pim-behat-3.ci/
+        Behat\Symfony2Extension\Extension:
+            kernel:
+                env: behat3
+    formatter:
+        name: Context\SummaryFormatter,junit
+        parameters:
+            output_path: null,app/build/logs/behat/
+    filters:
+        tags: ~skip&&~skip-pef&&~doc
+
+jenkins-4:
+    context:
+        parameters:
+            base_url: http://pim-behat-4.ci/
+            timeout: 30000
+            window_width: 1280
+            window_height: 1024
+    extensions:
+        Behat\MinkExtension\Extension:
+            base_url: http://pim-behat-4.ci/
+        Behat\Symfony2Extension\Extension:
+            kernel:
+                env: behat4
+    formatter:
+        name: Context\SummaryFormatter,junit
+        parameters:
+            output_path: null,app/build/logs/behat/
+    filters:
+        tags: ~skip&&~skip-pef&&~doc
