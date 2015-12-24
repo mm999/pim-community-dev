@@ -231,7 +231,7 @@ class HookContext extends PimContext
      */
     public function clearRecordedMails()
     {
-        $this->getMailRecorder()->clear();
+        $this->getMainContext()->getMailRecorder()->clear();
     }
 
     /**
