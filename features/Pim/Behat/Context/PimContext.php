@@ -16,19 +16,7 @@ class PimContext extends RawMinkContext implements KernelAwareInterface
 
     public function __construct()
     {
-        $this->resetPlaceholderValues();
-    }
-
-    /**
-     * @BeforeScenario
-     */
-    public function resetPlaceholderValues()
-    {
-        $this->placeholderValues = [
-            '%tmp%'      => getenv('BEHAT_TMPDIR') ?: '/tmp/pim-behat',
-            //TODO: change that later
-            '%fixtures%' => __DIR__ . '/../../../Context/fixtures'
-        ];
+//        $this->resetPlaceholderValues();
     }
 
     /**
@@ -57,6 +45,16 @@ class PimContext extends RawMinkContext implements KernelAwareInterface
     protected function getService($id)
     {
         return $this->kernel->getContainer()->get($id);
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return object
+     */
+    protected function getParameter($name)
+    {
+        return $this->kernel->getContainer()->getParameter($name);
     }
 
 

@@ -10,7 +10,6 @@ use Behat\Behat\Context\Step;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 use Doctrine\Common\Util\ClassUtils;
-use League\Flysystem\Filesystem;
 use League\Flysystem\MountManager;
 use Oro\Bundle\UserBundle\Entity\Role;
 use Pim\Behat\Context\FixturesContext as BaseFixturesContext;
@@ -2008,14 +2007,6 @@ class FixturesContext extends BaseFixturesContext
     protected function getAttributeManager()
     {
         return $this->getContainer()->get('pim_catalog.manager.attribute');
-    }
-
-    /**
-     * @return Filesystem[]
-     */
-    protected function getPimFilesystems()
-    {
-        return [];
     }
 
     /**

@@ -29,41 +29,8 @@ class WebUser extends RawMinkContext
 {
     use SpinCapableTrait;
 
-    protected $windowWidth;
-
-    protected $windowHeight;
-
-    /**
-     * Constructor
-     *
-     * @param int $windowWidth
-     * @param int $windowHeight
-     */
-    public function __construct($windowWidth, $windowHeight)
-    {
-        $this->windowWidth  = $windowWidth;
-        $this->windowHeight = $windowHeight;
-    }
     /* -------------------- Page-related methods -------------------- */
 
-    /**
-     * @BeforeScenario
-     */
-    public function maximize()
-    {
-        try {
-            $this->getSession()->resizeWindow($this->windowWidth, $this->windowHeight);
-        } catch (UnsupportedDriverActionException $e) {
-        }
-    }
-
-    /**
-     * @BeforeScenario
-     */
-    public function clearRecordedMails()
-    {
-        $this->getMailRecorder()->clear();
-    }
 
     /**
      * @param string $name

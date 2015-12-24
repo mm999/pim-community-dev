@@ -23,17 +23,6 @@ class CommandContext extends RawMinkContext
     protected $placeholderValues = [];
 
     /**
-     * @BeforeScenario
-     */
-    public function resetPlaceholderValues()
-    {
-        $this->placeholderValues = [
-            '%tmp%'      => getenv('BEHAT_TMPDIR') ?: '/tmp/pim-behat',
-            '%fixtures%' => __DIR__ . '/fixtures'
-        ];
-    }
-
-    /**
      * @Given /^I launched the completeness calculator$/
      */
     public function iLaunchedTheCompletenessCalculator()
